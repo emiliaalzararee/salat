@@ -1,8 +1,8 @@
--- Luodaan tietokanta
+
 CREATE DATABASE IF NOT EXISTS salat1;
 USE salat1;
 
--- Taulu: locations
+
 CREATE TABLE IF NOT EXISTS locations (
     LocationID INT(11) NOT NULL AUTO_INCREMENT,
     City VARCHAR(100) DEFAULT NULL,
@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS locations (
     PRIMARY KEY (LocationID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Taulu: users
+
 CREATE TABLE IF NOT EXISTS users (
     UserID INT(11) NOT NULL AUTO_INCREMENT,
     UserName VARCHAR(100) DEFAULT NULL,
@@ -24,7 +24,7 @@ CREATE TABLE IF NOT EXISTS users (
     CONSTRAINT users_ibfk_1 FOREIGN KEY (LocationID) REFERENCES locations (LocationID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Taulu: prayertimes
+
 CREATE TABLE IF NOT EXISTS prayertimes (
     PrayerTimeID INT(11) NOT NULL AUTO_INCREMENT,
     PrayerTime TIME DEFAULT NULL,
@@ -33,7 +33,7 @@ CREATE TABLE IF NOT EXISTS prayertimes (
     PRIMARY KEY (PrayerTimeID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Taulu: notifications
+
 CREATE TABLE IF NOT EXISTS notifications (
     NotificationID INT(11) NOT NULL AUTO_INCREMENT,
     UserID INT(11) DEFAULT NULL,
@@ -47,7 +47,7 @@ CREATE TABLE IF NOT EXISTS notifications (
     CONSTRAINT notifications_ibfk_2 FOREIGN KEY (PrayerTimeID) REFERENCES prayertimes (PrayerTimeID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
--- Taulu: sunnahprayers
+
 CREATE TABLE IF NOT EXISTS sunnahprayers (
     SunnahPrayerID INT(11) NOT NULL AUTO_INCREMENT,
     UserID INT(11) DEFAULT NULL,
@@ -60,3 +60,4 @@ CREATE TABLE IF NOT EXISTS sunnahprayers (
     CONSTRAINT sunnahprayers_ibfk_1 FOREIGN KEY (UserID) REFERENCES users (UserID),
     CONSTRAINT sunnahprayers_ibfk_2 FOREIGN KEY (PrayerTimeID) REFERENCES prayertimes (PrayerTimeID)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
